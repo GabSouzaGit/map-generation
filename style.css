@@ -1,0 +1,124 @@
+* {
+    font-family: monospace;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+}
+
+summary {
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+    outline: none;
+    display: inline;
+}
+
+button {
+    margin: 5px;
+    padding: 12px;
+    border: 1px solid hsl(0, 0%, 60%);
+    border-radius: 2px;
+    background: #fff;
+}
+
+input, select, button  {
+    cursor: pointer;
+    outline: none;
+}
+
+.input-error {
+    border: 1px solid hsl(0, 100%, 50%);
+    border-radius: 2px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.topic {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.topic svg {
+    height: 30px;
+    margin-right: 10px;
+}
+
+#content, #estatistics{
+    width: 100%;
+}
+
+#estat-results .graph {
+    max-width: 600px;
+    width: 100%;
+}
+
+#content {
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#content section:nth-child(1) {
+    min-width: 365px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#content section:nth-child(2) {
+    margin: 0 20px;
+    max-width: 450px;
+    width: 100%;
+}
+
+#content section:nth-child(2) h1 {
+    margin-top: 0;
+}
+
+#content section details {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 5px;
+}
+
+section input, section select {
+    padding: 5px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+#matrix {
+    border-collapse: collapse;
+}
+
+#matrix td  {
+    background: hsl(0, 0%, 80%);
+    padding: 6px 10px;
+    margin: 0;
+}
+
+.prob {
+    display: flex;
+    align-items: center;
+}
+
+.prob #remove {
+    padding: 5px;
+}
+
+#add-prob-button {
+    margin: 10px 0;
+}

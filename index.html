@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+
+    </header>
+    <div style="max-width:900px;width:100%">
+        <div id="content">
+            <section>
+                <table id="matrix">
+                </table>
+                <hr>
+                <p style="display: flex;justify-content: space-evenly;">
+                    <button id="rebuild"> Gerar uma vez</button>
+                    <button id="gen-with-cycles"> Geração completa </button>
+                </p>
+            </section>
+            <section>
+                <div id="generation-params">
+                    <h1> 
+                        <div class="topic">
+                            <svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008Z"></path>
+                            </svg>
+                            <div>
+                                Parâmetrizar geração 
+                            </div>
+                        </div>
+                    </h1>
+                    <p>
+                        Informe parâmetros para a geração de novo um mapa.
+                    </p>
+                    <hr>
+                    <div id="params">
+                        <details id="dimensions" open>
+                            <summary> 
+                                <div class="topic">
+                                    <svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z"></path>
+                                    </svg>
+                                    <div>
+                                        Dimensões
+                                    </div>
+                                </div>
+                            </summary>
+                            <p>
+                                Defina o tamanho do seu mapa em linhas e colunas.
+                            </p>
+                            <label>
+                                Linhas: <input type="number" id="matrix-rows" value="10" min="1" max="100">
+                            </label><br/>
+                            <label>
+                                Colunas: <input type="number" id="matrix-cols" value="10" min="1" max="100">
+                            </label>
+                        </details>
+                        <details id="probs" open>
+                            <summary> 
+                                <div class="topic">                                    
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                        <path d="M300-240q25 0 42.5-17.5T360-300q0-25-17.5-42.5T300-360q-25 0-42.5 17.5T240-300q0 25 17.5 42.5T300-240Zm0-360q25 0 42.5-17.5T360-660q0-25-17.5-42.5T300-720q-25 0-42.5 17.5T240-660q0 25 17.5 42.5T300-600Zm180 180q25 0 42.5-17.5T540-480q0-25-17.5-42.5T480-540q-25 0-42.5 17.5T420-480q0 25 17.5 42.5T480-420Zm180 180q25 0 42.5-17.5T720-300q0-25-17.5-42.5T660-360q-25 0-42.5 17.5T600-300q0 25 17.5 42.5T660-240Zm0-360q25 0 42.5-17.5T720-660q0-25-17.5-42.5T660-720q-25 0-42.5 17.5T600-660q0 25 17.5 42.5T660-600ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/>
+                                    </svg>
+                                    <div>
+                                        Entidades 
+                                    </div>
+                                </div>
+                            </summary>
+                            <p> Defina chances espeficicas de surgimento de determinadas entidades.</p>
+                            <button id="add-prob-button"> Adicionar probabilidade </button>
+                        </details>
+                        <details id="advanced">
+                            <summary> 
+                                <div class="topic">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24px">
+                                        <path d="m80-80 800-800v386q-19-9-39-14.5t-41-8.5v-170L273-160h217q6 22 16 41.5T528-80H80Zm193-80 527-527-263.5 263.5L273-160ZM720-40l-12-60q-12-5-22.5-10.5T664-124l-58 18-40-68 46-40q-2-13-2-26t2-26l-46-40 40-68 58 18q11-8 21.5-13.5T708-380l12-60h80l12 60q12 5 22.5 10.5T856-356l58-18 40 68-46 40q2 13 2 26t-2 26l46 40-40 68-58-18q-11 8-21.5 13.5T812-100l-12 60h-80Zm40-120q33 0 56.5-23.5T840-240q0-33-23.5-56.5T760-320q-33 0-56.5 23.5T680-240q0 33 23.5 56.5T760-160Z"/>
+                                    </svg>
+                                    <div>
+                                        Avançado
+                                    </div>
+                                </div>
+                            </summary>
+                            <p> Opções avançadas de geração. </p>
+                            <label>
+                                Aleatoriedade Mínima: <input type="number" id="min-random-value" value="0" min="0">
+                            </label><br/>
+                            <label>
+                                Aleatoriedade Máxima: <input type="number" id="max-random-value" value="1" min="1">
+                            </label><br/>
+                            <label>
+                                Numero de Ciclos por Geração: <input type="number" id="generation-cycles" value="10" min="1"/>
+                            </label><br/>
+                            <label>
+                                Tempo por Ciclo (/ms): <input type="number" id="mstime-per-cycle" value="20" min="1">
+                            </label><br/>
+                            <!-- ID's de entidade gerados dinâmicamente-->
+                        </details>
+                    </div>
+                </div>
+                </body>
+            </section>
+        </div>
+        <div id="estatistics">
+            <h1>
+                <div class="topic">
+                    <svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605"></path>
+                    </svg>
+                    <div>
+                        Estatísticas
+                    </div>
+                </div>
+            </h1>
+            <hr>
+            <div id="estat-results">
+                <div id="without-data" style="color:hsl(0, 0%, 20%);text-align:center;padding:20px">
+                    Sem dados...
+                </div>
+                <div class="graph" id="gen">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script type="module">
+        import {entityIDs} from "/javascript/utils.js";
+        
+        const advancedDetails = document.querySelector("#advanced");
+        const label = document.createElement("label");
+        const select = document.createElement("select");
+        
+        select.id = "default-char";
+        
+        for(let i = 0; i < entityIDs.length; i++){
+            select.appendChild(entityIDs[i].cloneNode(true));
+        }
+
+        label.textContent = "ID de Entidade Padrão: ";
+        label.appendChild(select);
+        advancedDetails.appendChild(label);
+    </script>
+    <script type="module" src="javascript/createProb.js"></script>
+    <script type="module" src="javascript/index.js"></script>
+</body>
+</html>
